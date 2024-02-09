@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+List<String> skillsImages = [
+  'assets/skills/java.png',
+  'assets/skills/cpp.png',
+  'assets/skills/js.png',
+  'assets/skills/python.png',
+  'assets/skills/sql.png',
+];
+List<String> skillsData = ['Java', 'C++', 'JS', 'Python', 'SQL'];
+
 class InfinityHome extends StatefulWidget {
   const InfinityHome({super.key});
 
@@ -8,15 +17,6 @@ class InfinityHome extends StatefulWidget {
 }
 
 class _InfinityHomeState extends State<InfinityHome> {
-  List<String> skillsImages = [
-    'assets/skills/java.png',
-    'assets/skills/cpp.png',
-    'assets/skills/js.png',
-    'assets/skills/python.png',
-    'assets/skills/sql.png',
-  ];
-  List<String> skillsData = ['Java', 'C++', 'JS', 'Python', 'SQL'];
-
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -212,43 +212,8 @@ class _InfinityHomeState extends State<InfinityHome> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Container(
-                                  height: height * 0.1,
-                                  width: 310,
-                                  decoration: BoxDecoration(
-                                    color: Colors.black,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: Container(
-                                        height: height * 0.1,
-                                        decoration: BoxDecoration(
-                                            border: Border(),
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
-                                        child: Image.asset(
-                                          skillsImages[index],
-                                          height: 64,
-                                          width: 64,
-                                        ),
-                                      )),
-                                ),
-                                Container(
-                                  height: height * 0.1,
-                                  width: 310,
-                                  decoration: BoxDecoration(
-                                    color: Colors.black,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: Image.asset(
-                                        skillsImages[index],
-                                        height: 64,
-                                        width: 64,
-                                      )),
-                                ),
+                                _buildRollBasedCourses(),
+                                _buildRollBasedCourses(),
                               ],
                             ),
                           );
@@ -262,13 +227,69 @@ class _InfinityHomeState extends State<InfinityHome> {
       ),
     );
   }
-}
 
-// Text(
-//                                     skillsData[index],
-//                                     style: TextStyle(
-//                                       fontSize: 16,
-//                                       color: Colors.black,
-//                                       fontWeight: FontWeight.w600,
-//                                     ),
-//                                   ),
+  Widget _buildRollBasedCourses() {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+    int index = 0;
+    return Container(
+      height: height * 0.1,
+      width: 310,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(
+          width: 2,
+          color: Colors.black,
+        ),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Row(
+        children: [
+          Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                height: height * 0.1,
+                width: 74,
+                decoration: BoxDecoration(
+                  color: Colors.black,
+                  border: Border(),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(8),
+                    bottomLeft: Radius.circular(8),
+                  ),
+                ),
+                child: Image.asset(
+                  skillsImages[index],
+                  height: 64,
+                  width: 64,
+                ),
+              )),
+          Padding(
+            padding: const EdgeInsets.only(left: 10.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  skillsData[index],
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Text(
+                  '25 Lectures | 12 Hours',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.black.withOpacity(0.6),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
