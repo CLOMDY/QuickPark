@@ -133,49 +133,127 @@ class _InfinityHomeState extends State<InfinityHome> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: height * 0.22,
-                  child: ListView.builder(
-                      physics: BouncingScrollPhysics(),
-                      itemCount: 5,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.only(
-                            left: 8,
-                            right: 8,
-                          ),
-                          child: Column(
-                            children: [
-                              Container(
-                                height: height * 0.16,
-                                width: 134,
-                                decoration: BoxDecoration(
-                                  color: Colors.black,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Align(
-                                    alignment: Alignment.center,
-                                    child: Image.asset(
-                                      skillsImages[index],
-                                      height: 74,
-                                      width: 74,
-                                    )),
-                              ),
-                              Align(
-                                alignment: Alignment.center,
-                                child: Text(
-                                  skillsData[index],
-                                  style: TextStyle(
-                                    fontSize: 14,
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                  child: SizedBox(
+                    height: height * 0.17,
+                    child: ListView.builder(
+                        physics: BouncingScrollPhysics(),
+                        itemCount: 5,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.only(
+                              left: 6,
+                              right: 6,
+                            ),
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: height * 0.14,
+                                  width: 110,
+                                  decoration: BoxDecoration(
                                     color: Colors.black,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Align(
+                                      alignment: Alignment.center,
+                                      child: Image.asset(
+                                        skillsImages[index],
+                                        height: 64,
+                                        width: 64,
+                                      )),
+                                ),
+                                Align(
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    skillsData[index],
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        );
-                      }),
+                              ],
+                            ),
+                          );
+                        }),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, top: 20),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Role based Courses",
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                  child: SizedBox(
+                    height: height * 0.25,
+                    child: ListView.builder(
+                        physics: BouncingScrollPhysics(),
+                        itemCount: 5,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.only(
+                              left: 6,
+                              right: 6,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Container(
+                                  height: height * 0.1,
+                                  width: 310,
+                                  decoration: BoxDecoration(
+                                    color: Colors.black,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Container(
+                                        height: height * 0.1,
+                                        decoration: BoxDecoration(
+                                            border: Border(),
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: Image.asset(
+                                          skillsImages[index],
+                                          height: 64,
+                                          width: 64,
+                                        ),
+                                      )),
+                                ),
+                                Container(
+                                  height: height * 0.1,
+                                  width: 310,
+                                  decoration: BoxDecoration(
+                                    color: Colors.black,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Image.asset(
+                                        skillsImages[index],
+                                        height: 64,
+                                        width: 64,
+                                      )),
+                                ),
+                              ],
+                            ),
+                          );
+                        }),
+                  ),
                 ),
               ],
             ),
@@ -185,3 +263,12 @@ class _InfinityHomeState extends State<InfinityHome> {
     );
   }
 }
+
+// Text(
+//                                     skillsData[index],
+//                                     style: TextStyle(
+//                                       fontSize: 16,
+//                                       color: Colors.black,
+//                                       fontWeight: FontWeight.w600,
+//                                     ),
+//                                   ),
