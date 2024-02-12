@@ -1,4 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:infinity/routes/skills/skils_page.dart';
+import 'package:infinity/util/data.dart';
 
 List<String> skillsImages = [
   'assets/skills/java.png',
@@ -7,6 +11,7 @@ List<String> skillsImages = [
   'assets/skills/python.png',
   'assets/skills/sql.png',
 ];
+
 List<String> skillsData = ['Java', 'C++', 'JS', 'Python', 'SQL'];
 
 class InfinityHome extends StatefulWidget {
@@ -17,6 +22,34 @@ class InfinityHome extends StatefulWidget {
 }
 
 class _InfinityHomeState extends State<InfinityHome> {
+  int index = 0;
+
+  // void navigation() {
+  //   if (index == 0) {
+  //     print('Java');
+  //   } else if (index == 1) {
+  //     print('CPP');
+  //   } else if (index == 2) {
+  //     print('JS');
+  //   } else if (index == 3) {
+  //     print('Python');
+  //   } else if (index == 4) {
+  //     print('SQL');
+  //   }
+  // }
+
+  Future<ProgrammingLanguage> getProgrammingLanguageData() async {
+    // Retrieve the document snapshot for the Java programming language
+    DocumentSnapshot<Map<String, dynamic>> snapshot = await FirebaseFirestore
+        .instance
+        .collection('programmingLanguages')
+        .doc('java')
+        .get();
+
+    // Convert the Firestore snapshot to a ProgrammingLanguage object
+    return ProgrammingLanguage.fromJson(snapshot.data()!);
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -149,20 +182,48 @@ class _InfinityHomeState extends State<InfinityHome> {
                             ),
                             child: Column(
                               children: [
-                                Container(
-                                  height: height * 0.14,
-                                  width: 110,
-                                  decoration: BoxDecoration(
-                                    color: Colors.black,
-                                    borderRadius: BorderRadius.circular(10),
+                                InkWell(
+                                  onTap: () {
+                                    // Navigate to ProgrammingLanguageScreen with data from Firestore
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            FutureBuilder<ProgrammingLanguage>(
+                                          future: getProgrammingLanguageData(),
+                                          builder: (context, snapshot) {
+                                            if (snapshot.connectionState ==
+                                                ConnectionState.waiting) {
+                                              return CircularProgressIndicator(); // Show loading indicator while data is being fetched
+                                            } else if (snapshot.hasError) {
+                                              return Text(
+                                                  'Error: ${snapshot.error}');
+                                            } else {
+                                              return ProgrammingLanguageScreen(
+                                                programmingLanguage:
+                                                    snapshot.data!,
+                                              );
+                                            }
+                                          },
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: Container(
+                                    height: height * 0.14,
+                                    width: 110,
+                                    decoration: BoxDecoration(
+                                      color: Colors.black,
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Align(
+                                        alignment: Alignment.center,
+                                        child: Image.asset(
+                                          skillsImages[index],
+                                          height: 64,
+                                          width: 64,
+                                        )),
                                   ),
-                                  child: Align(
-                                      alignment: Alignment.center,
-                                      child: Image.asset(
-                                        skillsImages[index],
-                                        height: 64,
-                                        width: 64,
-                                      )),
                                 ),
                                 Align(
                                   alignment: Alignment.center,
@@ -201,7 +262,7 @@ class _InfinityHomeState extends State<InfinityHome> {
                     height: height * 0.25,
                     child: ListView.builder(
                         physics: BouncingScrollPhysics(),
-                        itemCount: 5,
+                        itemCount: skillsData.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           return Padding(
@@ -212,8 +273,8 @@ class _InfinityHomeState extends State<InfinityHome> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                _buildRollBasedCourses(),
-                                _buildRollBasedCourses(),
+                                _buildRollBasedCourses(index),
+                                _buildRollBasedCourses(index),
                               ],
                             ),
                           );
@@ -228,10 +289,9 @@ class _InfinityHomeState extends State<InfinityHome> {
     );
   }
 
-  Widget _buildRollBasedCourses() {
+  Widget _buildRollBasedCourses(int index) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    int index = 0;
     return Container(
       height: height * 0.1,
       width: 310,
@@ -260,8 +320,8 @@ class _InfinityHomeState extends State<InfinityHome> {
                 ),
                 child: Image.asset(
                   skillsImages[index],
-                  height: 64,
-                  width: 64,
+                  height: 50,
+                  width: 50,
                 ),
               )),
           Padding(
