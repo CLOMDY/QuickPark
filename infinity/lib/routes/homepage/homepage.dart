@@ -1,8 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:infinity/routes/skills/skils_page.dart';
-import 'package:infinity/util/data.dart';
 
 List<String> skillsImages = [
   'assets/skills/java.png',
@@ -22,34 +18,6 @@ class InfinityHome extends StatefulWidget {
 }
 
 class _InfinityHomeState extends State<InfinityHome> {
-  int index = 0;
-
-  // void navigation() {
-  //   if (index == 0) {
-  //     print('Java');
-  //   } else if (index == 1) {
-  //     print('CPP');
-  //   } else if (index == 2) {
-  //     print('JS');
-  //   } else if (index == 3) {
-  //     print('Python');
-  //   } else if (index == 4) {
-  //     print('SQL');
-  //   }
-  // }
-
-  Future<ProgrammingLanguage> getProgrammingLanguageData() async {
-    // Retrieve the document snapshot for the Java programming language
-    DocumentSnapshot<Map<String, dynamic>> snapshot = await FirebaseFirestore
-        .instance
-        .collection('programmingLanguages')
-        .doc('java')
-        .get();
-
-    // Convert the Firestore snapshot to a ProgrammingLanguage object
-    return ProgrammingLanguage.fromJson(snapshot.data()!);
-  }
-
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -182,48 +150,20 @@ class _InfinityHomeState extends State<InfinityHome> {
                             ),
                             child: Column(
                               children: [
-                                InkWell(
-                                  onTap: () {
-                                    // Navigate to ProgrammingLanguageScreen with data from Firestore
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            FutureBuilder<ProgrammingLanguage>(
-                                          future: getProgrammingLanguageData(),
-                                          builder: (context, snapshot) {
-                                            if (snapshot.connectionState ==
-                                                ConnectionState.waiting) {
-                                              return CircularProgressIndicator(); // Show loading indicator while data is being fetched
-                                            } else if (snapshot.hasError) {
-                                              return Text(
-                                                  'Error: ${snapshot.error}');
-                                            } else {
-                                              return ProgrammingLanguageScreen(
-                                                programmingLanguage:
-                                                    snapshot.data!,
-                                              );
-                                            }
-                                          },
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                  child: Container(
-                                    height: height * 0.14,
-                                    width: 110,
-                                    decoration: BoxDecoration(
-                                      color: Colors.black,
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: Align(
-                                        alignment: Alignment.center,
-                                        child: Image.asset(
-                                          skillsImages[index],
-                                          height: 64,
-                                          width: 64,
-                                        )),
+                                Container(
+                                  height: height * 0.14,
+                                  width: 110,
+                                  decoration: BoxDecoration(
+                                    color: Colors.black,
+                                    borderRadius: BorderRadius.circular(10),
                                   ),
+                                  child: Align(
+                                      alignment: Alignment.center,
+                                      child: Image.asset(
+                                        skillsImages[index],
+                                        height: 64,
+                                        width: 64,
+                                      )),
                                 ),
                                 Align(
                                   alignment: Alignment.center,
