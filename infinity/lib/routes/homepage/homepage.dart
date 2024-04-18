@@ -33,7 +33,7 @@ class _InfinityHomeState extends State<InfinityHome> {
                 Container(
                   height: height * 0.25,
                   width: width,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.black,
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(30),
@@ -84,7 +84,7 @@ class _InfinityHomeState extends State<InfinityHome> {
                                   children: [
                                     Expanded(
                                       child: TextField(
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 18,
                                           color: Colors.black,
                                         ),
@@ -98,7 +98,7 @@ class _InfinityHomeState extends State<InfinityHome> {
                                           ),
                                           border: InputBorder.none,
                                           suffixIcon: IconButton(
-                                            icon: Icon(
+                                            icon: const Icon(
                                               Icons.search_outlined,
                                               color: Colors.black,
                                             ),
@@ -120,8 +120,8 @@ class _InfinityHomeState extends State<InfinityHome> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20, top: 20),
+                const Padding(
+                  padding: EdgeInsets.only(left: 20, top: 20),
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -135,11 +135,11 @@ class _InfinityHomeState extends State<InfinityHome> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                   child: SizedBox(
                     height: height * 0.17,
                     child: ListView.builder(
-                        physics: BouncingScrollPhysics(),
+                        physics: const BouncingScrollPhysics(),
                         itemCount: 5,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
@@ -169,7 +169,7 @@ class _InfinityHomeState extends State<InfinityHome> {
                                   alignment: Alignment.center,
                                   child: Text(
                                     skillsData[index],
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 16,
                                       color: Colors.black,
                                       fontWeight: FontWeight.w600,
@@ -182,8 +182,8 @@ class _InfinityHomeState extends State<InfinityHome> {
                         }),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20, top: 20),
+                const Padding(
+                  padding: EdgeInsets.only(left: 20, top: 20),
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -197,11 +197,11 @@ class _InfinityHomeState extends State<InfinityHome> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                   child: SizedBox(
                     height: height * 0.25,
                     child: ListView.builder(
-                        physics: BouncingScrollPhysics(),
+                        physics: const BouncingScrollPhysics(),
                         itemCount: skillsData.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
@@ -231,7 +231,6 @@ class _InfinityHomeState extends State<InfinityHome> {
 
   Widget _buildRollBasedCourses(int index) {
     double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
     return Container(
       height: height * 0.1,
       width: 310,
@@ -250,7 +249,7 @@ class _InfinityHomeState extends State<InfinityHome> {
               child: Container(
                 height: height * 0.1,
                 width: 74,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.black,
                   border: Border(),
                   borderRadius: BorderRadius.only(
@@ -272,7 +271,7 @@ class _InfinityHomeState extends State<InfinityHome> {
               children: [
                 Text(
                   skillsData[index],
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
                     color: Colors.black,
                     fontWeight: FontWeight.w600,
