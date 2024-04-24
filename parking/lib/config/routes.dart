@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:parking/pages/MapPage.dart';
+import 'package:parking/pages/map_page.dart';
 import 'package:parking/pages/homepage/homepage.dart';
 
 var pages = [

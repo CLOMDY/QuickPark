@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
       darkTheme: darkTheme,
       themeMode: ThemeMode.light,
       home: const HomePage(),
+      // home: MapPage(),
     );
   }
 }

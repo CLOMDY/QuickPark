@@ -10,10 +10,10 @@ class MapPage extends StatefulWidget {
   const MapPage({super.key});
 
   @override
-  State<MapPage> createState() => _MapPageState();
+  State<MapPage> createState() => MapPageState();
 }
 
-class _MapPageState extends State<MapPage> {
+class MapPageState extends State<MapPage> {
   @override
   void initState() {
     super.initState();
@@ -22,7 +22,7 @@ class _MapPageState extends State<MapPage> {
   @override
   Widget build(BuildContext context) {
     final Completer<GoogleMapController> controller = Completer();
-    const LatLng center = LatLng(23.25226182392082, 77.48536382627971);
+    const LatLng center = LatLng(29.17956353845604, 75.7427650481516);
 
     return Scaffold(
       appBar: AppBar(
@@ -30,14 +30,8 @@ class _MapPageState extends State<MapPage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              "assets/images/white_logo.png",
-              width: 40,
-              height: 40,
-            ),
-            const SizedBox(width: 20),
             const Text(
-              "Smart Parking System",
+              "Parking Areas",
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w600,
@@ -73,7 +67,7 @@ class _MapPageState extends State<MapPage> {
               Get.to(HomePage());
             },
             markerId: MarkerId('parking_1'),
-            position: LatLng(23.25149294505952, 77.48705898225234),
+            position: LatLng(29.1663735267811, 75.71941910095912),
           ),
           Marker(
             visible: true,
@@ -81,7 +75,7 @@ class _MapPageState extends State<MapPage> {
               Get.to(HomePage());
             },
             markerId: MarkerId('parking_2'),
-            position: LatLng(23.252025246281843, 77.48283182115601),
+            position: LatLng(29.177165480603826, 75.70671615910437),
           ),
           Marker(
             visible: true,
@@ -89,7 +83,7 @@ class _MapPageState extends State<MapPage> {
               Get.to(HomePage());
             },
             markerId: MarkerId('parking_3'),
-            position: LatLng(23.251670379036387, 77.47907672881156),
+            position: LatLng(29.151082983375417, 75.71083603213835),
           ),
           Marker(
             visible: true,
@@ -97,7 +91,7 @@ class _MapPageState extends State<MapPage> {
               Get.to(HomePage());
             },
             markerId: MarkerId('parking_4'),
-            position: LatLng(23.2484962466233, 77.48594318366699),
+            position: LatLng(29.15048330783298, 75.73006210629687),
           ),
           Marker(
             visible: true,
@@ -105,7 +99,7 @@ class _MapPageState extends State<MapPage> {
               Get.to(HomePage());
             },
             markerId: MarkerId('parking_5'),
-            position: LatLng(23.251951095267497, 77.48558382672624),
+            position: LatLng(29.133720417726618, 75.73744877651771),
           ),
         },
         myLocationButtonEnabled: true,
