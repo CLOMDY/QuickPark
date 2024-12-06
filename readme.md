@@ -91,4 +91,4 @@ Pages :-
 			A) There will be a page where user can see the list of all the added product with all the info with 			   some options like
 				I) Edit Product
 				II) Deleat Product
-	d) User  (--------------_-Discussion Required--------------_----)
+	d) User  (---------------Discussion Required------------------)
